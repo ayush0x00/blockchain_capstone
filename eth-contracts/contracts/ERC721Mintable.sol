@@ -1,3 +1,5 @@
+
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.5.0;
 
 import 'openzeppelin-solidity/contracts/utils/Address.sol';
@@ -15,7 +17,7 @@ contract Ownable {
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
     address private _owner;
     event ownerShipTransferred(address from, address to);
-    function getOwner() public returns(address){
+    function getOwner() public view returns(address){
       return _owner;
     }
     constructor () internal {
@@ -499,13 +501,13 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     }
 
     // TODO: create external getter functions for name, symbol, and baseTokenURI
-    function name() external returns(string memory){
+    function name() external view returns(string memory){
       return _name;
     }
-    function symbol() external returns(string memory){
+    function symbol() external view returns(string memory){
       return _symbol;
     }
-    function baseTokenURI() external returns(string memory){
+    function baseTokenURI() external view returns(string memory){
       return _baseTokenURI;
     }
     function tokenURI(uint256 tokenId) external view returns (string memory) {
