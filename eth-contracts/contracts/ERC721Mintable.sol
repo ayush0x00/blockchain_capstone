@@ -1,4 +1,4 @@
-pragma solidity 0.6.10;
+pragma solidity ^0.5.0;
 
 import 'openzeppelin-solidity/contracts/utils/Address.sol';
 import 'openzeppelin-solidity/contracts/drafts/Counters.sol';
@@ -47,7 +47,7 @@ contract Pausable is Ownable{
   bool private _paused;
   event Paused(address caller);
   event Unpaused(address caller);
-  modifier paused(){
+  modifier pause(){
     require(_paused==true);
     _;
   }
@@ -55,11 +55,11 @@ contract Pausable is Ownable{
     require(_paused==false);
     _;
   }
-  function paused() onlyOwner whenNotPaused{
+  function paused() public onlyOwner whenNotPaused{
     _paused=true;
     emit Paused(msg.sender);
   }
-  function unpause() onlyOwner paused{
+  function unpause() public onlyOwner pause{
     _paused=false;
     emit Unpaused(msg.sender);
   }
@@ -159,7 +159,7 @@ contract ERC721 is Pausable, ERC165 {
 
         // TODO require the given address to not be the owner of the tokenId
         require(to!=_tokenOwner[tokenId]);
-        require (msg.sender==_owner || isApprovedForAll(_owner,msg.sender));
+        require (msg.sender==ownerOf(tokenId) || isApprovedForAll(ownerOf(tokenId),msg.sender));
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
 
         // TODO add 'to' address to token approvals
@@ -167,7 +167,7 @@ contract ERC721 is Pausable, ERC165 {
         _tokenApprovals[tokenId] = to;
 
     // Emit Approval Event
-      emit Approval(owner, to, tokenId);
+      emit Approval(ownerOf(tokenId), to, tokenId);
 
         // TODO emit Approval Event
 
@@ -499,13 +499,13 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     }
 
     // TODO: create external getter functions for name, symbol, and baseTokenURI
-    function name() external{
+    function name() external returns(string memory){
       return _name;
     }
-    function symbol() external{
+    function symbol() external returns(string memory){
       return _symbol;
     }
-    function baseTokenURI() external{
+    function baseTokenURI() external returns(string memory){
       return _baseTokenURI;
     }
     function tokenURI(uint256 tokenId) external view returns (string memory) {

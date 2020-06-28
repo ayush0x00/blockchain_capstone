@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
-pragma solidity 0.6.10; // Incompatible compiler version - please select a compiler within the stated pragma range, or use a different version of the oraclizeAPI!
+pragma solidity >= 0.5.0; // Incompatible compiler version - please select a compiler within the stated pragma range, or use a different version of the oraclizeAPI!
 
 // Dummy contract only used to emit to end-user they are using wrong solc
 contract solcChecker {
@@ -1091,7 +1091,7 @@ contract usingOraclize {
              Check the relaxed random contract at https://github.com/oraclize/ethereum-examples
              for an idea on how to override and replace commit hash variables.
             */
-            mstore(add(unonce, 0x20), xor(blockhash(sub(number, 1))), xor(coinbase, timestamp))
+            mstore(add(unonce, 0x20), xor(blockhash(sub(number, 1)), xor(coinbase, timestamp)))
             mstore(sessionKeyHash, 0x20)
             mstore(add(sessionKeyHash, 0x20), sessionKeyHash_bytes32)
         }
