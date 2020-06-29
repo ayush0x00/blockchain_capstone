@@ -8,11 +8,11 @@ Summary
 > Total deployments:   4
 > Final cost:          0.17559786 ETH
 
-## Contract Adress-SolnSquareVerifier 0x0dEe84674421d33001906F2B6EC041B43e9226b8
+## Contract Adress-SolnSquareVerifier 0x6d1c179614d218cBA713fe9531E763d590B167FC
 
-## Contract address-SquareVerifier 0x1D45012B5552B81b94EBE8e91Bbb335Ee03bD02E
+## Contract address-SquareVerifier 0x0e0272a01f11a69f175480a93718F7413732192C
 
-## contract address-ERC721Mintable 0xEAA159CdB9494cf0A5B37b3CE6d1cec28029194c
+## contract address-ERC721Mintable 0xcf01aA1F1b9cE5c0D44d2967ecCDeCd1A418B05D
 
 
 ## Contract ABI
@@ -83,9 +83,28 @@ Summary
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "address",
-        "name": "caller",
+        "name": "account",
         "type": "address"
       }
     ],
@@ -142,30 +161,11 @@ Summary
       {
         "indexed": false,
         "internalType": "address",
-        "name": "caller",
+        "name": "account",
         "type": "address"
       }
     ],
     "name": "Unpaused",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      }
-    ],
-    "name": "ownerShipTransferred",
     "type": "event"
   },
   {
@@ -292,21 +292,6 @@ Summary
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "getOwner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
     "inputs": [
       {
         "internalType": "address",
@@ -334,12 +319,42 @@ Summary
   {
     "constant": true,
     "inputs": [],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "name",
     "outputs": [
       {
         "internalType": "string",
         "name": "",
         "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "payable": false,
@@ -370,7 +385,7 @@ Summary
   {
     "constant": false,
     "inputs": [],
-    "name": "paused",
+    "name": "pause",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
