@@ -21,7 +21,7 @@ I haven't been able to use it as I am not able to mint my tokens.
 2) Make an `npm install`
 3) Enter in the `eth-contracts` folder
 4) Launch local chain using `truffle develop`
-4) To launch the tests, make `truffle test`.
+4) To launch the tests, make `test`.
 
 ## More infos
 * The contracts ABI:
