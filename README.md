@@ -1,21 +1,30 @@
 # Udacity Blockchain Capstone
 
-The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product.
-
-# Project Addresses
-Summary
-=======
-> Total deployments:   4
-> Final cost:          0.17559786 ETH
-
-## Contract Adress-SolnSquareVerifier 0x6d1c179614d218cBA713fe9531E763d590B167FC
-
-## Contract address-SquareVerifier 0x0e0272a01f11a69f175480a93718F7413732192C
-
-## contract address-ERC721Mintable 0xcf01aA1F1b9cE5c0D44d2967ecCDeCd1A418B05D
+This project has been done in order to validate the Udacity Blockchain Nanodegree.
+Goals of this project:
+* Create a token that is ERC721 compliant (inherit from ERC721, ERC721Enumerable and ERC721Metadata)
+* Use `zokrates` in order to use zero knowledge proof to let someone mint a token
+* Deploy the contract and mint tokens on the Rinkeby network
+* Use `OpenSea` to create a storefront, display items, and trade them
 
 
-## Contract ABI
+## Rinkeby deployment infos
+**CustomERC721Token** address: `0xF1623F0961A23B5Cc78616cADed9Bef0b92eCf1C`  
+**Verifier** address: `0x4fE2Ee52C31FD8faA3212f78Ac0B5617e7f89923`  
+**SolnSquareVerifier** address: `0xb71D01cDDE57e02B420Caf602cA135D96c9a1878`  
+
+## OpenSea infos
+I haven't been able to use it as I am not able to mint my tokens.
+
+## Make some tests on the contracts
+1) Go to the root of the project
+2) Make an `npm install`
+3) Enter in the `eth-contracts` folder
+4) Launch local chain using `truffle develop`
+4) To launch the tests, make `truffle test`.
+
+## More infos
+* The contracts ABI:
 [
   {
     "inputs": [
@@ -701,14 +710,3 @@ Summary
     "type": "function"
   }
 ]
-
-# Project Resources
-
-* [Remix - Solidity IDE](https://remix.ethereum.org/)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Truffle Framework](https://truffleframework.com/)
-* [Ganache - One Click Blockchain](https://truffleframework.com/ganache)
-* [Open Zeppelin ](https://openzeppelin.org/)
-* [Interactive zero knowledge 3-colorability demonstration](http://web.mit.edu/~ezyang/Public/graph/svg.html)
-* [Docker](https://docs.docker.com/install/)
-* [ZoKrates](https://github.com/Zokrates/ZoKrates)
