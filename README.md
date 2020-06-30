@@ -22,6 +22,14 @@ https://rinkeby.opensea.io/assets/0xbba81911367c8425e27901ccfd15b598dc2acee2/1
 3) Enter in the `eth-contracts` folder
 4) Launch local chain using `truffle develop`
 4) To launch the tests write `test`.
+One test should fail as you are minting the token when you are not the owner of the token
+
+##Minting the tokens
+1) Open truffle console: `truffle console --network rinkeby`
+2) Import proof.json from zokrates/code/square `var zokrates=require("../zokrates/code/square/proof.json")`
+3) `let token=await SolnSquareVerifier.deployed()`
+4) submit your solution `await token.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID)` replace account2 by the address of your account and tokenId by the tokenId you want
+5) Mint the token `await token.mint(account2,tokenID)`
 
 ## More infos
 * The contracts ABI:
@@ -735,10 +743,3 @@ https://rinkeby.opensea.io/assets/0xbba81911367c8425e27901ccfd15b598dc2acee2/1
     "type": "function"
   }
 ]
-
-##Minting the tokens
-1) Open truffle console: `truffle console --network rinkeby`
-2) Import proof.json from zokrates/code/square `var zokrates=require("../zokrates/code/square/proof.json")`
-3) `let token=await SolnSquareVerifier.deployed()`
-4) submit your solution `await token.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID)` replace account2 by the address of your account and tokenId by the tokenId you want
-5) Mint the token `await token.mint(account2,tokenID)`

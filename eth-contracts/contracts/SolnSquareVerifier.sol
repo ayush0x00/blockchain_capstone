@@ -33,7 +33,7 @@ contract SolnSquareVerifier is CustomERC721Token {
   event SolutionSubmitted(address indexed owner, uint256 indexed tokenID);
 
   // Create a function to add the solutions to the array and emit the event
-  function submitSolution (uint[2] memory a,uint[2] memory a_p,uint[2][2] memory b,uint[2] memory b_p, uint[2] memory c,uint[2] memory c_p,uint[2] memory h, uint[2] memory input, address account, uint256 tokenID) public {
+  function submitSolution (uint[2] memory a,uint[2] memory a_p,uint[2][2] memory b,uint[2] memory b_p, uint[2] memory c,uint[2] memory c_p,uint[2] memory h,uint[2] memory k, uint[2] memory input, address account, uint256 tokenID) public {
     require(squareVerifier.verifyTx(a,a_p,b,b_p,c,c_p,h,k,input), "unable to verify the solution");
 
     // Hash a, b, c and the input to create a unique key for the solution
