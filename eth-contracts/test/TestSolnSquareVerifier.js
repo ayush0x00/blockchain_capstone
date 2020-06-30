@@ -1,5 +1,5 @@
 var SolnSquareVerifier = artifacts.require('./SolnSquareVerifier.sol');
-var SquareVerifier = artifacts.require('SquareVerifier');
+var SquareVerifier = artifacts.require('Verifier');
 const zokratesProof = require("../../zokrates/code/square/proof.json");
 
 contract("TestSolnSquareVerifier", accounts => {
@@ -34,9 +34,9 @@ contract("TestSolnSquareVerifier", accounts => {
     let result = false;
 
     try {
-      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.inputs, account2, tokenID, { from: account2 });
+      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID, { from: account2 });
       result = true;
-    } 
+    }
     catch(e) {
       console.log(e);
       result = false;
@@ -48,8 +48,8 @@ contract("TestSolnSquareVerifier", accounts => {
     let result = false;
 
     try {
-      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.inputs, account2, tokenID, { from: account2 });
-      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.inputs, account2, tokenID+1, { from: account2 });
+      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID, { from: account2 });
+      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID+1, { from: account2 });
       result = true;
     } catch(e) {
       result = false;
@@ -61,7 +61,7 @@ contract("TestSolnSquareVerifier", accounts => {
   it("should be able to mint new token after solution has been submitted", async() => {
     let result = false;
     try {
-      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.inputs, account2, tokenID, { from: account2 });
+      await this.contract.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID, { from: account2 });
       await this.contract.mint(account2, tokenID, { from: account1 });
       result = true
     } catch(e) {
