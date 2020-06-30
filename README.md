@@ -9,19 +9,19 @@ Goals of this project:
 
 
 ## Rinkeby deployment infos
-**CustomERC721Token** address: `0xF1623F0961A23B5Cc78616cADed9Bef0b92eCf1C`  
-**Verifier** address: `0x4fE2Ee52C31FD8faA3212f78Ac0B5617e7f89923`  
-**SolnSquareVerifier** address: `0xb71D01cDDE57e02B420Caf602cA135D96c9a1878`  
+**CustomERC721Token** address: `0x5b90Ac4Ae19CA7c86191BD1638387FA79fe6d7Bd`  
+**Verifier** address: `0xfa178eb1Ba25A47e5aB2280043891C8CF677d3C3`  
+**SolnSquareVerifier** address: `0xbBA81911367C8425e27901cCfD15B598Dc2aCEE2`  
 
 ## OpenSea infos
-I haven't been able to use it as I am not able to mint my tokens.
+https://rinkeby.opensea.io/assets/0xbba81911367c8425e27901ccfd15b598dc2acee2/1
 
 ## Make some tests on the contracts
 1) Go to the root of the project
 2) Make an `npm install`
 3) Enter in the `eth-contracts` folder
 4) Launch local chain using `truffle develop`
-4) To launch the tests, make `test`.
+4) To launch the tests write `test`.
 
 ## More infos
 * The contracts ABI:
@@ -652,13 +652,38 @@ I haven't been able to use it as I am not able to mint my tokens.
         "type": "uint256[2]"
       },
       {
+        "internalType": "uint256[2]",
+        "name": "a_p",
+        "type": "uint256[2]"
+      },
+      {
         "internalType": "uint256[2][2]",
         "name": "b",
         "type": "uint256[2][2]"
       },
       {
         "internalType": "uint256[2]",
+        "name": "b_p",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2]",
         "name": "c",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "c_p",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "h",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "k",
         "type": "uint256[2]"
       },
       {
@@ -710,3 +735,10 @@ I haven't been able to use it as I am not able to mint my tokens.
     "type": "function"
   }
 ]
+
+##Minting the tokens
+1) Open truffle console: `truffle console --network rinkeby`
+2) Import proof.json from zokrates/code/square `var zokrates=require("../zokrates/code/square/proof.json")`
+3) `let token=await SolnSquareVerifier.deployed()`
+4) submit your solution `await token.submitSolution(...Object.values(zokratesProof.proof), zokratesProof.input, account2, tokenID)` replace account2 by the address of your account and tokenId by the tokenId you want
+5) Mint the token `await token.mint(account2,tokenID)`
