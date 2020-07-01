@@ -22,7 +22,7 @@ https://rinkeby.opensea.io/assets/0xbba81911367c8425e27901ccfd15b598dc2acee2/1
 3) Enter in the `eth-contracts` folder
 4) Launch local chain using `truffle develop`
 4) To launch the tests write `test`.
-One test should fail as you are minting the token when you are not the owner of the token
+Test 5 and 8 should throw error(in other words they should fail)
 
 ##Minting the tokens
 1) Open truffle console: `truffle console --network rinkeby`
