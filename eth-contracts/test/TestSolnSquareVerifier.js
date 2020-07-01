@@ -54,7 +54,7 @@ contract("TestSolnSquareVerifier", accounts => {
 			2,
 			{from:account1})
 		} catch(err){
-			console.log(err.message)
+			assert.equal(err.reason,"solution has already been used previously; create a new one using ZoKrates")
 		}
   //  console.log(result2)
 

@@ -53,7 +53,7 @@ contract('TestERC721Mintable', accounts => {
           try{
             await this.contract.mint(account2,1,{from:account2});
           }catch(e){
-            console.log(e.message)
+            assert.equal(e.reason,"caller must be the contract owner")
           }
 
         })
